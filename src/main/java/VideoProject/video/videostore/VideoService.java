@@ -11,6 +11,7 @@ public interface VideoService {
 
     Collection<Video> findByAllVideo();
 
+    // 비디오 대여
     public LocalDate findByRentalVideo(Long memberId);
 
 }
