@@ -1,9 +1,16 @@
 package VideoProject.video.videostore;
 
 import java.time.LocalDate;
+import java.util.Collection;
 
 public interface VideoService {
 
-    // 비디오 대여
-    LocalDate findByRentalVideo(Video video);
+    void signUpVideo(Video video);
+
+    Video findByVideo(Long videoId);
+
+    Collection<Video> findByAllVideo();
+
+    public LocalDate findByRentalVideo(Long memberId);
+
 }

@@ -1,5 +1,7 @@
 package VideoProject.video.videostore;
 
+import java.time.LocalDate;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,9 +20,8 @@ public class MemoryVideoRepository implements VideoRepository {
     }
 
     @Override
-    public Video findByAllVideo() {
-        return null;
+    public Collection<Video> findByAllVideo() {
+        return store.values();
     }
-
 
 }

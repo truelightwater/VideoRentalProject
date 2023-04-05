@@ -1,7 +1,6 @@
 package VideoProject.video.member;
 
 public interface MemberRepository {
-    void save(Member member);
-
+    void join(Member member);
     Member findByMember(Long memberId);
 }

@@ -1,5 +1,8 @@
 package VideoProject.video.videostore;
 
+import java.time.LocalDate;
+import java.util.Collection;
+
 public interface VideoRepository {
 
     // 비디오 등록
@@ -9,5 +12,6 @@ public interface VideoRepository {
     Video findByVideo(Long videoId);
 
     // 비디오 리스트 조회
-    Video findByAllVideo();
+    Collection<Video> findByAllVideo();
+
 }

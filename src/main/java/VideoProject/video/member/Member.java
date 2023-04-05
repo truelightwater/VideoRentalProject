@@ -8,6 +8,8 @@ public class Member {
     private String phoneNumber;
     private String address;
     private Integer age;
+    private LocalDate rentalDate;
+    private LocalDate returnDate;
 
     public Member(Long id, String name, String phoneNumber, String address, Integer age) {
         this.id = id;
@@ -57,6 +59,22 @@ public class Member {
         this.age = age;
     }
 
+    public LocalDate getRentalDate() {
+        return rentalDate;
+    }
+
+    public LocalDate getReturnDate() {
+        return returnDate;
+    }
+
+    public void setRentalDate(LocalDate rentalDate) {
+        this.rentalDate = rentalDate;
+    }
+
+    public void setReturnDate(LocalDate returnDate) {
+        this.returnDate = returnDate;
+    }
+
     @Override
     public String toString() {
         return "Member{" +
@@ -65,6 +83,8 @@ public class Member {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", address='" + address + '\'' +
                 ", age=" + age +
+                ", rentalDate=" + rentalDate +
+                ", returnDate=" + returnDate +
                 '}';
     }
 }
