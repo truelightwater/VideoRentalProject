@@ -14,23 +14,22 @@ public class VideoServiceImpl implements VideoService {
 
     private final MemberRepository memberRepository = new MemoryMemberRepository();
     private final VideoRepository videoRepository = new MemoryVideoRepository();
-    private int count = 0;
+    private int RentalVideoCount = 0;
+
+    ArrayList<Video> videoArrayList = new ArrayList<>();
 
     @Override
-    public Map<Integer, ArrayList> rentalVideo(Member member, Video video, LocalDate date) {
+    public ArrayList<Video> rentalVideo(Member member, Video video, LocalDate date) {
 
         // 비디오 총 대여 개수
-        count++;
-
-        ArrayList<Video> arrayList = new ArrayList<>();
-        Map<Integer, ArrayList> rentals = new HashMap<>();
+        RentalVideoCount++;
 
         // 빌린 사람
         Member byMember = memberRepository.findByMember(member.getId());
 
         // 빌린 비디오
-        arrayList.add(video);
-        byMember.setVideoList(arrayList);
+        videoArrayList.add(video);
+        byMember.setVideoList(videoArrayList);
 
         // 반납 날짜
         LocalDate returnDate = date.plusDays(7);
@@ -51,14 +50,7 @@ public class VideoServiceImpl implements VideoService {
         }
 
 
-        for (int i = 0; i < arrayList.size(); i++) {
-            System.out.println(arrayList.get(i));
-        }
-
-        rentals.put(count, arrayList);
-
-
-        return rentals;
+        return videoArrayList;
     }
 
 

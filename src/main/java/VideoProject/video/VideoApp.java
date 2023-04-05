@@ -44,8 +44,10 @@ public class VideoApp {
 
         // 대여하는 사람, 비디오, 대여날짜
         videoService.rentalVideo(member1 ,video1, LocalDate.parse("2023-03-30"));
-        videoService.rentalVideo(member1 ,video2, LocalDate.now());
-        System.out.println(member1);
+        videoService.rentalVideo(member1, video2, LocalDate.now());
+
+        System.out.println(member1.getVideoList());
+
 
 
     }
