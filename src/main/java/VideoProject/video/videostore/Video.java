@@ -9,6 +9,7 @@ public class Video {
     private Enum genre;
     private LocalDate rentalDate;
     private LocalDate returnDate;
+    private boolean isRental;
 
     public Video(Long id, String name, Integer runningTime, Enum genre) {
         this.id = id;
@@ -65,6 +66,14 @@ public class Video {
         this.returnDate = returnDate;
     }
 
+    public boolean isRental() {
+        return isRental;
+    }
+
+    public void setRental(boolean rental) {
+        isRental = rental;
+    }
+
     @Override
     public String toString() {
         return "Video{" +
@@ -74,6 +83,7 @@ public class Video {
                 ", genre=" + genre +
                 ", rentalDate=" + rentalDate +
                 ", returnDate=" + returnDate +
+                ", isRental=" + isRental +
                 '}';
     }
 }

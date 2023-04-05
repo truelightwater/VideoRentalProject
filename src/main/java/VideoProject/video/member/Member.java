@@ -1,6 +1,6 @@
 package VideoProject.video.member;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Member {
     private Long id;
@@ -8,8 +8,7 @@ public class Member {
     private String phoneNumber;
     private String address;
     private Integer age;
-    private LocalDate rentalDate;
-    private LocalDate returnDate;
+    private ArrayList videoList;
 
     public Member(Long id, String name, String phoneNumber, String address, Integer age) {
         this.id = id;
@@ -59,20 +58,12 @@ public class Member {
         this.age = age;
     }
 
-    public LocalDate getRentalDate() {
-        return rentalDate;
+    public ArrayList getVideoList() {
+        return videoList;
     }
 
-    public LocalDate getReturnDate() {
-        return returnDate;
-    }
-
-    public void setRentalDate(LocalDate rentalDate) {
-        this.rentalDate = rentalDate;
-    }
-
-    public void setReturnDate(LocalDate returnDate) {
-        this.returnDate = returnDate;
+    public void setVideoList(ArrayList videoList) {
+        this.videoList = videoList;
     }
 
     @Override
@@ -83,8 +74,7 @@ public class Member {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", address='" + address + '\'' +
                 ", age=" + age +
-                ", rentalDate=" + rentalDate +
-                ", returnDate=" + returnDate +
+                ", videoList=" + videoList +
                 '}';
     }
 }
