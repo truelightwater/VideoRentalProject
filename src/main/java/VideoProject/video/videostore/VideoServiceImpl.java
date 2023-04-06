@@ -13,10 +13,10 @@ public class VideoServiceImpl implements VideoService {
     private final VideoRepository videoRepository = new MemoryVideoRepository();
     private int RentalVideoCount = 0;
 
+    ArrayList<Video> rentalList = new ArrayList<>();
+
     @Override
     public void rentalVideo(Member member, Video video, LocalDate date) {
-
-        ArrayList<Video> rentalList = new ArrayList<>();
 
         // 비디오 총 대여 개수
         RentalVideoCount++;
