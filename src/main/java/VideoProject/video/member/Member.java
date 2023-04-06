@@ -1,5 +1,7 @@
 package VideoProject.video.member;
 
+import VideoProject.video.videostore.Video;
+
 import java.util.ArrayList;
 
 public class Member {
@@ -62,8 +64,8 @@ public class Member {
         return videoList;
     }
 
-    public void setVideoList(ArrayList videoList) {
-        this.videoList = videoList;
+    public void setVideoList(ArrayList arrayList) {
+        this.videoList = arrayList;
     }
 
     @Override

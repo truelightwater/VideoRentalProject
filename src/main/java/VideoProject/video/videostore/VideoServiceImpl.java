@@ -7,19 +7,16 @@ import VideoProject.video.member.MemoryMemberRepository;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 public class VideoServiceImpl implements VideoService {
-
     private final MemberRepository memberRepository = new MemoryMemberRepository();
     private final VideoRepository videoRepository = new MemoryVideoRepository();
     private int RentalVideoCount = 0;
 
-    ArrayList<Video> videoArrayList = new ArrayList<>();
-
     @Override
-    public ArrayList<Video> rentalVideo(Member member, Video video, LocalDate date) {
+    public void rentalVideo(Member member, Video video, LocalDate date) {
+
+        ArrayList<Video> rentalList = new ArrayList<>();
 
         // 비디오 총 대여 개수
         RentalVideoCount++;
@@ -27,32 +24,46 @@ public class VideoServiceImpl implements VideoService {
         // 빌린 사람
         Member byMember = memberRepository.findByMember(member.getId());
 
-        // 빌린 비디오
-        videoArrayList.add(video);
-        byMember.setVideoList(videoArrayList);
-
-        // 반납 날짜
-        LocalDate returnDate = date.plusDays(7);
-
         // 비디오 대여여부
-        if (video.isRental() == false) {
-            video.setRental(true);
-        }
+        booleanRental(video);
 
         // 비디오 빌린날짜 업데이트
-        if (video.getRentalDate() == null) {
-            video.setRentalDate(date);
-        }
+        updateRentalDate(video, date);
 
         // 비디오 반납날짜 업데이트
+        updateReturnDate(video, date);
+
+        // 빌린 비디오
+        rentalList.add(video);
+        byMember.setVideoList(rentalList);
+
+    }
+
+    public void checkOverdueDate(Video video) {
+        if (video.getReturnDate().isAfter(LocalDate.now())) {
+            System.out.println("이 비디오는 연체가 되었습니다.");
+        }
+    }
+
+    public void updateReturnDate(Video video, LocalDate date) {
+        LocalDate returnDate = date.plusDays(7);
+
         if (video.getReturnDate() == null) {
             video.setReturnDate(returnDate);
         }
-
-
-        return videoArrayList;
     }
 
+    public void updateRentalDate(Video video, LocalDate date) {
+        if (video.getRentalDate() == null) {
+            video.setRentalDate(date);
+        }
+    }
+
+    public void booleanRental(Video video) {
+        if (video.isRental() == false) {
+            video.setRental(true);
+        }
+    }
 
     @Override
     public void signUpVideo(Video video) {
@@ -70,8 +81,15 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
-    public LocalDate findByRentalVideo(Long memberId) {
-        Member member = memberRepository.findByMember(memberId);
-        return null;
+    public int getRentalVideoCount() {
+        return RentalVideoCount;
+    }
+
+    @Override
+    public void findMyRentalVideo(Member member) {
+
+        for (int i = 0; i < member.getVideoList().size(); i++) {
+            System.out.println(member.getVideoList().get(i));
+        }
     }
 }

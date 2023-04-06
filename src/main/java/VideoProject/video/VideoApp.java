@@ -42,12 +42,16 @@ public class VideoApp {
         System.out.println("find Video = " + findVideo);
         System.out.println("All Video = " + AllVideo);*/
 
-        // 대여하는 사람, 비디오, 대여날짜
-        videoService.rentalVideo(member1 ,video1, LocalDate.parse("2023-03-30"));
+        // 대여하는 사람, 비디오, 대여날짜 (member1)
+        videoService.rentalVideo(member1, video1, LocalDate.parse("2023-03-30"));
         videoService.rentalVideo(member1, video2, LocalDate.now());
 
-        System.out.println(member1.getVideoList());
+//        videoService.rentalVideo(member2 ,video3, LocalDate.parse("2023-03-30"));
+//        videoService.rentalVideo(member2, video4, LocalDate.now());
 
+
+        // 비디오 대여 및 반납 확인
+        videoService.findMyRentalVideo(member1);
 
 
     }
