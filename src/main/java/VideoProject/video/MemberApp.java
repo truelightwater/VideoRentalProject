@@ -24,5 +24,6 @@ public class MemberApp {
         Member findMember = memberService.findMember(2L);
         System.out.println("new member = " + member1);
         System.out.println("find member = " + findMember);
+
     }
 }

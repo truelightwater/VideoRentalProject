@@ -1,17 +1,14 @@
 package VideoProject.video;
 
 import VideoProject.video.member.*;
-import VideoProject.video.videostore.Genre;
-import VideoProject.video.videostore.MemoryVideoRepository;
-import VideoProject.video.videostore.Video;
-import VideoProject.video.videostore.VideoRepository;
+import VideoProject.video.videostore.*;
 
-import java.util.Collection;
+import java.time.LocalDate;
 
 public class VideoApp {
     public static void main(String[] args) {
 
-        VideoRepository videoRepository = new MemoryVideoRepository();
+        VideoService videoService = new VideoServiceImpl();
         MemberService memberService = new MemberServiceImpl();
 
         Video video1 = new Video(1L, "길복순", 137, Genre.ACTION);
@@ -32,18 +29,30 @@ public class VideoApp {
         memberService.join(member4);
         memberService.join(member5);
 
-        videoRepository.signUpVideo(video1);
-        videoRepository.signUpVideo(video2);
-        videoRepository.signUpVideo(video3);
-        videoRepository.signUpVideo(video4);
-        videoRepository.signUpVideo(video5);
+        videoService.signUpVideo(video1);
+        videoService.signUpVideo(video2);
+        videoService.signUpVideo(video3);
+        videoService.signUpVideo(video4);
+        videoService.signUpVideo(video5);
 
-        Video findVideo = videoRepository.findByVideo(2L);
-        Collection<Video> AllVideo = videoRepository.findByAllVideo();
+/*        Video findVideo = videoService.findByVideo(2L);
+        Collection<Video> AllVideo = videoService.findByAllVideo();
 
         System.out.println("new Video = " + video1);
         System.out.println("find Video = " + findVideo);
-        System.out.println("All Video = " + AllVideo);
+        System.out.println("All Video = " + AllVideo);*/
+
+        // 대여하는 사람, 비디오, 대여날짜 (member1)
+//        videoService.rentalVideo(member1, video1, LocalDate.parse("2023-03-30"));
+//        videoService.rentalVideo(member1, video2, LocalDate.now());
+
+        videoService.rentalVideo(member2 ,video3, LocalDate.parse("2023-03-30"));
+        videoService.rentalVideo(member2, video4, LocalDate.now());
+
+
+        // 비디오 대여 및 반납 확인
+        videoService.findMyRentalVideo(member2);
+
 
     }
 }
