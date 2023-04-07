@@ -1,11 +1,7 @@
 package VideoProject.video.videostore;
 
-import VideoProject.video.member.Member;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Set;
+
 
 public interface VideoService {
 
@@ -13,18 +9,12 @@ public interface VideoService {
     void signUpVideo(Video video);
 
     // 비디오 찾기
-    Video findByVideo(Long videoId);
+    Video findByVideo(String name);
 
     // 비디오 전체 조회
     Collection<Video> findByAllVideo();
 
-    // 비디오 대여
-    public void rentalVideo(Member member, Video video, LocalDate date);
-
-    // 비디오 대여+반납 확인
-    public  void findMyRentalVideo(Member member);
-
-    // 비디오 가게 총 대여갯수
-    public int getRentalVideoCount();
+    // 비디오 대여여부 체크
+    public void booleanRental(Video video);
 
 }

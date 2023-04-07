@@ -1,28 +1,26 @@
 package VideoProject.video.videostore;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 public class Video {
-    private Long id;
+    private UUID id;
     private String name;
-    private Integer RunningTime;
-    private Enum genre;
+    private Genre genre;
     private LocalDate rentalDate;
     private LocalDate returnDate;
-    private boolean isRental;
+    private boolean isRental = false;
 
-    public Video(Long id, String name, Integer runningTime, Enum genre) {
-        this.id = id;
-        this.name = name;
-        RunningTime = runningTime;
-        this.genre = genre;
+    public Video() {
+        UUID uuid = UUID.randomUUID();
+        this.id = uuid;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -34,19 +32,12 @@ public class Video {
         this.name = name;
     }
 
-    public Integer getRunningTime() {
-        return RunningTime;
-    }
-
-    public void setRunningTime(Integer runningTime) {
-        RunningTime = runningTime;
-    }
 
     public Enum getGenre() {
         return genre;
     }
 
-    public void setGenre(Enum genre) {
+    public void setGenre(Genre genre) {
         this.genre = genre;
     }
 
@@ -66,7 +57,7 @@ public class Video {
         this.returnDate = returnDate;
     }
 
-    public boolean isRental() {
+    public boolean getRental() {
         return isRental;
     }
 
@@ -79,7 +70,6 @@ public class Video {
         return "Video{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", RunningTime=" + RunningTime +
                 ", genre=" + genre +
                 ", rentalDate=" + rentalDate +
                 ", returnDate=" + returnDate +

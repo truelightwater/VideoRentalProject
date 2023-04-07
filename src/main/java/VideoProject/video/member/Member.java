@@ -1,18 +1,16 @@
 package VideoProject.video.member;
 
-import VideoProject.video.videostore.Video;
-
 import java.util.ArrayList;
 
 public class Member {
-    private Long id;
+    private long id;
     private String name;
     private String phoneNumber;
     private String address;
-    private Integer age;
+    private int age;
     private ArrayList videoList;
 
-    public Member(Long id, String name, String phoneNumber, String address, Integer age) {
+    public Member(long id, String name, String phoneNumber, String address, int age) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -20,11 +18,11 @@ public class Member {
         this.age = age;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -52,7 +50,7 @@ public class Member {
         this.address = address;
     }
 
-    public Integer getAge() {
+    public int getAge() {
         return age;
     }
 
