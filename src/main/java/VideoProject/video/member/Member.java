@@ -1,28 +1,26 @@
 package VideoProject.video.member;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Member {
-    private long id;
+    private UUID id;
     private String name;
     private String phoneNumber;
-    private String address;
     private int age;
     private ArrayList videoList;
 
-    public Member(long id, String name, String phoneNumber, String address, int age) {
-        this.id = id;
+    public Member() {
+        this.id = UUID.randomUUID();
         this.name = name;
         this.phoneNumber = phoneNumber;
-        this.address = address;
         this.age = age;
     }
 
-    public long getId() {
+    public UUID getId() {
         return id;
     }
-
-    public void setId(long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -40,14 +38,6 @@ public class Member {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public int getAge() {
@@ -72,7 +62,6 @@ public class Member {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", address='" + address + '\'' +
                 ", age=" + age +
                 ", videoList=" + videoList +
                 '}';

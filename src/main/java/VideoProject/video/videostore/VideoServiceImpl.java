@@ -27,4 +27,21 @@ public class VideoServiceImpl implements VideoService {
             video.setRental(true);
         }
     }
+
+    @Override
+    public void singUpGenre(int genreNumber, Video video) {
+
+        switch (genreNumber) {
+            case 1:
+                video.setGenre(Genre.ROMANTIC); break;
+            case 2:
+                video.setGenre(Genre.SF); break;
+            case 3:
+                video.setGenre(Genre.COMEDY); break;
+            case 4:
+                video.setGenre(Genre.HORROR); break;
+            case 5:
+                video.setGenre(Genre.ACTION); break;
+        }
+    }
 }

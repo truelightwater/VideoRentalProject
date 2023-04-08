@@ -17,4 +17,8 @@ public interface VideoService {
     // 비디오 대여여부 체크
     public void booleanRental(Video video);
 
+    // 비디오 장르 등록
+    public void singUpGenre(int genreNumber, Video video);
+
+
 }

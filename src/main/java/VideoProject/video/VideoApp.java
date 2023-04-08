@@ -1,6 +1,8 @@
 package VideoProject.video;
 
-import VideoProject.video.member.*;
+import VideoProject.video.member.Member;
+import VideoProject.video.member.MemberService;
+import VideoProject.video.member.MemberServiceImpl;
 import VideoProject.video.videostore.*;
 
 import java.time.LocalDate;
@@ -10,17 +12,19 @@ public class VideoApp {
     public static void main(String[] args) {
 
         VideoService videoService = new VideoServiceImpl();
+        MemberService memberService = new MemberServiceImpl();
+
 
         Scanner scanner = new Scanner(System.in);
         int choice = 0;
 
         while (true) {
-
             do {
-                System.out.println("(1)비디오 등록 (2)비디오 검색 (3)비디오 전체조회 (4)비디오 대여 (5)종료");
+                System.out.println("(1)비디오 등록 (2)비디오 검색 (3)비디오 전체조회 " +
+                        "(4)비디오 대여 (5)회원가입 (6)회원조회 (7)종료");
                 System.out.print("원하는 번호를 입력하세요 : ");
                 choice = scanner.nextInt();
-            } while (choice < 1 || choice > 5);
+            } while (choice < 1 || choice > 7);
 
             switch (choice) {
                 case 1:
@@ -38,18 +42,8 @@ public class VideoApp {
                     System.out.print("비디오 장르는 번호를 입력해주세요 : ");
                     genre = scanner.nextInt();
 
-                    switch (genre) {
-                        case 1:
-                            newVideo.setGenre(Genre.ROMANTIC); break;
-                        case 2:
-                            newVideo.setGenre(Genre.SF); break;
-                        case 3:
-                            newVideo.setGenre(Genre.COMEDY); break;
-                        case 4:
-                            newVideo.setGenre(Genre.HORROR); break;
-                        case 5:
-                            newVideo.setGenre(Genre.ACTION); break;
-                    }
+                    // 비디오 장르 등록
+                    videoService.singUpGenre(genre, newVideo);
 
                     // 대여날짜
                     newVideo.setRentalDate(today);
@@ -80,15 +74,39 @@ public class VideoApp {
                     System.out.println();
                     break;
 
-
                 case 4:
-                    break;
+
 
 
                 case 5:
+                    Member member = new Member();
+                    System.out.print("성함을 입력해주세요. : ");
+                    String memberName = scanner.next();
+                    member.setName(memberName);
 
+                    System.out.print("휴대폰번호를 입력해 주세요. : ");
+                    String phoneNumber = scanner.next();
+                    member.setPhoneNumber(phoneNumber);
+
+                    System.out.print("나이를 입력해주세요 : ");
+                    int age = scanner.nextInt();
+                    member.setAge(age);
+
+                    memberService.join(member);
+                    System.out.println();
                     break;
 
+                case 6:
+                    System.out.print ("회원 이름을 입력해주세요 : ");
+                    name = scanner.next();
+                    memberService.findMember(name);
+                    System.out.println();
+                    break;
+
+
+                case 7:
+                    System.exit(0);
+                    break;
             }
 
 

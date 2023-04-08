@@ -12,8 +12,7 @@ public class Video {
     private boolean isRental = false;
 
     public Video() {
-        UUID uuid = UUID.randomUUID();
-        this.id = uuid;
+        this.id = UUID.randomUUID();
     }
 
     public UUID getId() {
