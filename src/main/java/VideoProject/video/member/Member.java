@@ -3,28 +3,26 @@ package VideoProject.video.member;
 import VideoProject.video.videostore.Video;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Member {
-    private Long id;
+    private UUID id;
     private String name;
     private String phoneNumber;
-    private String address;
-    private Integer age;
-    private ArrayList videoList;
+    private int age;
+    private ArrayList<Video> arrayList;
 
-    public Member(Long id, String name, String phoneNumber, String address, Integer age) {
-        this.id = id;
+    public Member() {
+        this.id = UUID.randomUUID();
         this.name = name;
         this.phoneNumber = phoneNumber;
-        this.address = address;
         this.age = age;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
-
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -44,28 +42,20 @@ public class Member {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public Integer getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
-    public ArrayList getVideoList() {
-        return videoList;
+    public ArrayList<Video> getArrayList() {
+        return arrayList;
     }
 
-    public void setVideoList(ArrayList arrayList) {
-        this.videoList = arrayList;
+    public void setArrayList(ArrayList<Video> arrayList) {
+        this.arrayList = arrayList;
     }
 
     @Override
@@ -74,9 +64,7 @@ public class Member {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", address='" + address + '\'' +
                 ", age=" + age +
-                ", videoList=" + videoList +
                 '}';
     }
 }

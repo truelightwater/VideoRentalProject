@@ -1,26 +1,28 @@
 package VideoProject.video.videostore;
 
-import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 public class MemoryVideoRepository implements VideoRepository {
-
-    private static Map<Long, Video> store = new HashMap<>();
+    private static Map<String, Video> store = new HashMap<>();
 
     @Override
     public void signUpVideo(Video video) {
-        store.put(video.getId(), video);
+        store.put(video.getName(), video);
     }
 
     @Override
-    public Video findByVideo(Long videoId) {
-        return store.get(videoId);
+    public Video findByVideo(String name) {
+        System.out.println(store.get(name));
+        return store.get(name);
     }
 
     @Override
     public Collection<Video> findByAllVideo() {
+        for (Video data : store.values()) {
+            System.out.println(data);
+        }
         return store.values();
     }
 

@@ -2,7 +2,7 @@ package VideoProject.video.member;
 
 public class MemberServiceImpl implements MemberService {
 
-    private MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository = new MemoryMemberRepository();
 
     @Override
     public void join(Member member) {
@@ -10,8 +10,8 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public Member findMember(Long memberId) {
-        return memberRepository.findByMember(memberId);
+    public Member findMember(String name) {
+        return memberRepository.findByMember(name);
     }
 
 }
