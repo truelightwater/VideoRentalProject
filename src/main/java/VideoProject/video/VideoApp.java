@@ -5,7 +5,6 @@ import VideoProject.video.member.MemberService;
 import VideoProject.video.member.MemberServiceImpl;
 import VideoProject.video.videostore.*;
 
-import java.time.LocalDate;
 import java.util.Scanner;
 
 public class VideoApp {
@@ -21,10 +20,10 @@ public class VideoApp {
         while (true) {
             do {
                 System.out.println("(1)비디오 등록 (2)비디오 검색 (3)비디오 전체조회 " +
-                        "(4)비디오 대여 (5)회원가입 (6)회원조회 (7)종료");
+                        "(4)비디오 대여 (5)반납 비디오 (6)회원가입 (7)회원조회 (8)종료");
                 System.out.print("원하는 번호를 입력하세요 : ");
                 choice = scanner.nextInt();
-            } while (choice < 1 || choice > 7);
+            } while (choice < 1 || choice > 8);
 
             switch (choice) {
                 case 1:
@@ -32,30 +31,20 @@ public class VideoApp {
                     Video newVideo = new Video();
                     String name = "";
                     int genre = 0;
-                    LocalDate today = LocalDate.now();
 
                     System.out.print("비디오 제목을 입력해주세요. : ");
                     newVideo.setName(scanner.next());
 
-                    System.out.println("비디오 장르를 입력해주세요.");
-                    System.out.println("(1)로맨스 (2)SF (3)코미디 (4)호러 (5)액션 ");
+                    System.out.println("비디오 장르를 입력해주세요. (1)로맨스 (2)SF (3)코미디 (4)호러 (5)액션");
                     System.out.print("비디오 장르는 번호를 입력해주세요 : ");
                     genre = scanner.nextInt();
 
                     // 비디오 장르 등록
                     videoService.singUpGenre(genre, newVideo);
 
-                    // 대여날짜
-                    newVideo.setRentalDate(today);
-
-                    // 반납날짜
-                    newVideo.setReturnDate(today.plusDays(7));
-
                     // 비디오 등록
                     videoService.signUpVideo(newVideo);
 
-                    // 비디오 대여여부 체크
-                    videoService.booleanRental(newVideo);
                     System.out.println();
                     break;
 
@@ -75,14 +64,28 @@ public class VideoApp {
                     break;
 
                 case 4:
+                    System.out.print("대여 할 회원을 입력해주세요. : ");
+                    String rentalMemberName = scanner.next();
+                    System.out.print("대여 할 비디오를 입력하세요 : ");
+                    String rentalVideoName = scanner.next();
 
-
+                    // 비디오 대여 (대여한 사람, 대여할 비디오)
+                    videoService.rentalVideo(rentalMemberName, rentalVideoName);
+                    break;
 
                 case 5:
+                    System.out.print("회원 이름을 입력하세요 : ");
+                    String memberName = scanner.next();
+                    videoService.returnVideo(memberName);
+                    System.out.println();
+
+                    break;
+
+                case 6:
                     Member member = new Member();
                     System.out.print("성함을 입력해주세요. : ");
-                    String memberName = scanner.next();
-                    member.setName(memberName);
+                    name = scanner.next();
+                    member.setName(name);
 
                     System.out.print("휴대폰번호를 입력해 주세요. : ");
                     String phoneNumber = scanner.next();
@@ -96,7 +99,7 @@ public class VideoApp {
                     System.out.println();
                     break;
 
-                case 6:
+                case 7:
                     System.out.print ("회원 이름을 입력해주세요 : ");
                     name = scanner.next();
                     memberService.findMember(name);
@@ -104,7 +107,7 @@ public class VideoApp {
                     break;
 
 
-                case 7:
+                case 8:
                     System.exit(0);
                     break;
             }

@@ -1,6 +1,10 @@
 package VideoProject.video.videostore;
 
+import VideoProject.video.member.Member;
+
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public interface VideoService {
@@ -15,10 +19,17 @@ public interface VideoService {
     Collection<Video> findByAllVideo();
 
     // 비디오 대여여부 체크
-    public void booleanRental(Video video);
+    void booleanRental(Video video);
 
     // 비디오 장르 등록
-    public void singUpGenre(int genreNumber, Video video);
+    void singUpGenre(int genreNumber, Video video);
+
+    // 비디오 대여
+    void rentalVideo(String memberName, String videoName);
+
+    // 비디오 반납 확인
+    void returnVideo(String memberName);
+
 
 
 }

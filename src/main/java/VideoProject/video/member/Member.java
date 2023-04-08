@@ -1,5 +1,7 @@
 package VideoProject.video.member;
 
+import VideoProject.video.videostore.Video;
+
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -8,7 +10,7 @@ public class Member {
     private String name;
     private String phoneNumber;
     private int age;
-    private ArrayList videoList;
+    private ArrayList<Video> arrayList;
 
     public Member() {
         this.id = UUID.randomUUID();
@@ -44,16 +46,16 @@ public class Member {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
-    public ArrayList getVideoList() {
-        return videoList;
+    public ArrayList<Video> getArrayList() {
+        return arrayList;
     }
 
-    public void setVideoList(ArrayList arrayList) {
-        this.videoList = arrayList;
+    public void setArrayList(ArrayList<Video> arrayList) {
+        this.arrayList = arrayList;
     }
 
     @Override
@@ -63,7 +65,6 @@ public class Member {
                 ", name='" + name + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", age=" + age +
-                ", videoList=" + videoList +
                 '}';
     }
 }

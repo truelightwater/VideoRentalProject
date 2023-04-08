@@ -2,7 +2,6 @@ package VideoProject.video.member;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 public class MemoryMemberRepository implements MemberRepository {
 
