@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 출처 : https://goddaehee.tistory.com/206  -->
+<!-- 스프링, 일반 자바프로그램의 경우에는 logback.xml 파일을 resource 디렉토리에 만들어서 참조한다. -->
+<configuration scan="true" scanPeriod="60 seconds">
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>[%d{yyyy-MM-dd HH:mm:ss}:%-3relative] [%thread] %-5level %logger{36} - %msg%n</Pattern>
+        </encoder>
+    </appender>
+
+    <!-- Logback 은 5단계의 로그 레벨을 가진다.
+        심각도 수준은 ERROR > WARN > INFO > DEBUG > TRACE 이다. -->
+    <!-- logger 은 지역설정 -->
+    <logger name="VideoProject.video" level="Debug"/>
+
+    <!-- root 는 전역설정, logger 설정이 있다면 해당 logger 설정이 default 로 적용 -->
+    <root level="Info">
+        <appender-ref ref="console"/>
+    </root>
+</configuration>

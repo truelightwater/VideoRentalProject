@@ -1,5 +1,6 @@
 package VideoProject.video;
 
+import VideoProject.video.Annotation.MemberAnnotationCheck;
 import VideoProject.video.member.Member;
 import VideoProject.video.member.MemberService;
 import VideoProject.video.member.MemberServiceImpl;
@@ -12,6 +13,7 @@ public class VideoApp {
 
         VideoService videoService = new VideoServiceImpl();
         MemberService memberService = new MemberServiceImpl();
+        MemberAnnotationCheck annotationCheck = new MemberAnnotationCheck();
 
 
         Scanner scanner = new Scanner(System.in);
@@ -20,7 +22,7 @@ public class VideoApp {
         while (true) {
             do {
                 System.out.println("(1)비디오 등록 (2)비디오 검색 (3)비디오 전체조회 " +
-                        "(4)비디오 대여 (5)반납 비디오 (6)회원가입 (7)회원조회 (8)종료");
+                        "(4)비디오 대여 (5)비디오 반납목록 (6)회원가입 (7)회원조회 (8)종료");
                 System.out.print("원하는 번호를 입력하세요 : ");
                 choice = scanner.nextInt();
             } while (choice < 1 || choice > 8);
@@ -71,6 +73,7 @@ public class VideoApp {
 
                     // 비디오 대여 (대여한 사람, 대여할 비디오)
                     videoService.rentalVideo(rentalMemberName, rentalVideoName);
+                    System.out.println();
                     break;
 
                 case 5:
@@ -83,17 +86,20 @@ public class VideoApp {
 
                 case 6:
                     Member member = new Member();
+
                     System.out.print("성함을 입력해주세요. : ");
                     name = scanner.next();
                     member.setName(name);
 
-                    System.out.print("휴대폰번호를 입력해 주세요. : ");
+                    System.out.print("휴대폰번호를 입력해 주세요.(하이픈 포함) : ");
                     String phoneNumber = scanner.next();
                     member.setPhoneNumber(phoneNumber);
 
                     System.out.print("나이를 입력해주세요 : ");
                     int age = scanner.nextInt();
                     member.setAge(age);
+
+                    annotationCheck.memberValidation(member);
 
                     memberService.join(member);
                     System.out.println();

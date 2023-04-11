@@ -7,7 +7,6 @@ import VideoProject.video.videostore.Genre;
 import VideoProject.video.videostore.Video;
 import VideoProject.video.videostore.VideoService;
 import VideoProject.video.videostore.VideoServiceImpl;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.time.LocalDate;
@@ -67,17 +66,7 @@ public class VideoApplication {
 		member.setAge(31);
 		memberService.join(member1);
 
-		videoService.rentalVideo(member.getName(), video1.getName());
-		videoService.rentalVideo(member.getName(), video2.getName());
-
-		videoService.rentalVideo(member1.getName(), video3.getName());
-		videoService.rentalVideo(member1.getName(), video4.getName());
-
-		videoService.returnVideo(member.getName());
-		videoService.returnVideo(member1.getName());
-
-
-
+		memberService.findMember("kim");
 	}
 
 }
