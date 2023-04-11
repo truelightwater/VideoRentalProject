@@ -1,7 +1,7 @@
 package VideoProject.video.member;
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 public class MemberServiceTest {
 

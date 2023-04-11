@@ -14,7 +14,6 @@ public class Member {
     private String name;
     @PhoneNumberAnnotation
     private String phoneNumber;
-
     @RangeAgeAnnotation(min = 8, max = 100)
     private int age;
 
