@@ -1,16 +1,23 @@
 package VideoProject.video.member;
 
+import VideoProject.video.Annotation.NameAnnotation;
+import VideoProject.video.Annotation.PhoneNumberAnnotation;
+import VideoProject.video.Annotation.RangeAgeAnnotation;
 import VideoProject.video.videostore.Video;
 
 import java.util.ArrayList;
 import java.util.UUID;
 
-
 public class Member {
     private UUID id;
+    @NameAnnotation(nameLength = 10)
     private String name;
+    @PhoneNumberAnnotation
     private String phoneNumber;
+
+    @RangeAgeAnnotation(min = 8, max = 100)
     private int age;
+
     private ArrayList<Video> arrayList;
 
     public Member() {

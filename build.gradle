@@ -15,7 +15,7 @@ repositories {
 dependencies {
 	// logback 은 스프링 부트에 기본으로 설정되어 있어 별도 라이브러리를 추가하지 않아도 된다.
 	implementation 'org.springframework.boot:spring-boot-starter'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	implementation 'org.slf4j:slf4j-api:1.7.5'
 

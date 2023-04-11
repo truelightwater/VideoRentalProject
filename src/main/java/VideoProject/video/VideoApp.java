@@ -1,5 +1,6 @@
 package VideoProject.video;
 
+import VideoProject.video.Annotation.MemberAnnotationCheck;
 import VideoProject.video.member.Member;
 import VideoProject.video.member.MemberService;
 import VideoProject.video.member.MemberServiceImpl;
@@ -12,6 +13,7 @@ public class VideoApp {
 
         VideoService videoService = new VideoServiceImpl();
         MemberService memberService = new MemberServiceImpl();
+        MemberAnnotationCheck annotationCheck = new MemberAnnotationCheck();
 
 
         Scanner scanner = new Scanner(System.in);
@@ -84,17 +86,20 @@ public class VideoApp {
 
                 case 6:
                     Member member = new Member();
+
                     System.out.print("성함을 입력해주세요. : ");
                     name = scanner.next();
                     member.setName(name);
 
-                    System.out.print("휴대폰번호를 입력해 주세요. : ");
+                    System.out.print("휴대폰번호를 입력해 주세요.(하이픈 포함) : ");
                     String phoneNumber = scanner.next();
                     member.setPhoneNumber(phoneNumber);
 
                     System.out.print("나이를 입력해주세요 : ");
                     int age = scanner.nextInt();
                     member.setAge(age);
+
+                    annotationCheck.memberValidation(member);
 
                     memberService.join(member);
                     System.out.println();
