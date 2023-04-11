@@ -20,7 +20,7 @@ public class VideoApp {
         while (true) {
             do {
                 System.out.println("(1)비디오 등록 (2)비디오 검색 (3)비디오 전체조회 " +
-                        "(4)비디오 대여 (5)반납 비디오 (6)회원가입 (7)회원조회 (8)종료");
+                        "(4)비디오 대여 (5)비디오 반납목록 (6)회원가입 (7)회원조회 (8)종료");
                 System.out.print("원하는 번호를 입력하세요 : ");
                 choice = scanner.nextInt();
             } while (choice < 1 || choice > 8);
@@ -71,6 +71,7 @@ public class VideoApp {
 
                     // 비디오 대여 (대여한 사람, 대여할 비디오)
                     videoService.rentalVideo(rentalMemberName, rentalVideoName);
+                    System.out.println();
                     break;
 
                 case 5:

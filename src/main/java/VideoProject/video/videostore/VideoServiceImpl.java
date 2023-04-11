@@ -79,7 +79,6 @@ public class VideoServiceImpl implements VideoService {
         arrayList.add(rentalVideo);
         rentalMember.setArrayList(arrayList);
         addValueToMap(memberVideo, rentalMember, rentalVideo);
-
     }
 
     public void addValueToMap(Map<Member, ArrayList<Video>> map, Member member, Video video) {

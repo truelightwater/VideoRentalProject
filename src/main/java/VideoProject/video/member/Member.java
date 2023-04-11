@@ -5,6 +5,7 @@ import VideoProject.video.videostore.Video;
 import java.util.ArrayList;
 import java.util.UUID;
 
+
 public class Member {
     private UUID id;
     private String name;
@@ -61,8 +62,7 @@ public class Member {
     @Override
     public String toString() {
         return "Member{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", age=" + age +
                 '}';
