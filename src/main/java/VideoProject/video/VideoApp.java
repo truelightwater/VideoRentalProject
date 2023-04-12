@@ -6,6 +6,8 @@ import VideoProject.video.member.MemberService;
 import VideoProject.video.member.MemberServiceImpl;
 import VideoProject.video.videostore.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class VideoApp {
@@ -14,6 +16,7 @@ public class VideoApp {
         VideoService videoService = new VideoServiceImpl();
         MemberService memberService = new MemberServiceImpl();
         MemberAnnotationCheck annotationCheck = new MemberAnnotationCheck();
+        List<Integer> history = new ArrayList<>();
 
         Scanner scanner = new Scanner(System.in);
         int choice = 0;
@@ -21,9 +24,24 @@ public class VideoApp {
         while (true) {
             do {
                 System.out.println("(1)비디오 등록 (2)비디오 검색 (3)비디오 전체조회 " +
-                        "(4)비디오 대여 (5)비디오 반납목록 (6)회원가입 (7)회원조회 (8)종료");
+                        "(4)비디오 대여 (5)비디오 반납목록 (6)회원가입 (7)회원조회 (8)히스토리 (9)종료");
                 System.out.print("원하는 번호를 입력하세요 : ");
+
+                // 입력값이 숫자가 아닌 경우
+                while (!scanner.hasNextInt()) {
+                    System.out.println("잘못 입력하셨습니다. 턴1~8 중에 숫자만 입력해주세요.");
+                    System.out.print("원하는 번호를 입력하세요 : ");
+                    scanner.next();
+                }
+
+                if (choice < 1 || choice > 8) {
+                    System.out.println("잘못된 번호를 입력하셨습니다. 다시 입력해주세요.");
+                    System.out.println();
+                }
+
                 choice = scanner.nextInt();
+                history.add(choice);
+
             } while (choice < 1 || choice > 8);
 
             switch (choice) {
@@ -84,7 +102,8 @@ public class VideoApp {
                     break;
 
                 case 6:
-                    Member member = new Member();
+
+                    Member member = Member.builder().build();
 
                     System.out.print("성함을 입력해주세요. : ");
                     name = scanner.next();
@@ -111,16 +130,16 @@ public class VideoApp {
                     System.out.println();
                     break;
 
-
                 case 8:
+                    System.out.print("사용자가 입력한 번호의 목록 : " +history);
+                    System.out.println();
+                    break;
+
+
+                case 9:
                     System.exit(0);
                     break;
             }
-
-
-
         }
-
-
     }
 }

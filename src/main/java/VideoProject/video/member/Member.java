@@ -19,16 +19,21 @@ public class Member {
 
     private ArrayList<Video> arrayList;
 
-    public Member() {
+    private Member(MemberBuilder builder) {
         this.id = UUID.randomUUID();
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.age = age;
+        this.name = builder.name;
+        this.phoneNumber = builder.phoneNumber;
+        this.age = builder.age;
+    }
+
+    public static MemberBuilder builder() {
+        return new MemberBuilder();
     }
 
     public UUID getId() {
         return id;
     }
+
     public void setId(UUID id) {
         this.id = id;
     }
@@ -72,5 +77,31 @@ public class Member {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", age=" + age +
                 '}';
+    }
+
+    public static class MemberBuilder {
+        private String name;
+        private int age;
+        private String phoneNumber;
+
+        public MemberBuilder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public MemberBuilder age(int age) {
+            this.age = age;
+            return this;
+        }
+
+        public MemberBuilder phoneNumber(String phoneNumber) {
+            this.phoneNumber = phoneNumber;
+            return this;
+        }
+
+        public Member build() {
+            return new Member(this);
+
+        }
     }
 }

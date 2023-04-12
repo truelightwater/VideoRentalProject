@@ -10,7 +10,6 @@ import VideoProject.video.videostore.VideoServiceImpl;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.time.LocalDate;
-import java.util.Collection;
 
 @SpringBootApplication
 public class VideoApplication {
@@ -50,16 +49,18 @@ public class VideoApplication {
 		videoService.signUpVideo(video3);
 		videoService.signUpVideo(video4);
 
-		Member member = new Member();
-		member.setName("kim");
-		member.setPhoneNumber("1234");
-		member.setAge(34);
+		Member member = Member.builder()
+				.name("kim")
+				.phoneNumber("010-1234-1234")
+				.age(34)
+				.build();
 		memberService.join(member);
 
-		Member member1 = new Member();
-		member1.setName("yun");
-		member.setPhoneNumber("5678");
-		member.setAge(31);
+		Member member1 = Member.builder()
+						.name("yun")
+						.phoneNumber("010-5678-5678")
+						.age(31)
+						.build();
 		memberService.join(member1);
 
 		memberService.findMember("kim");
