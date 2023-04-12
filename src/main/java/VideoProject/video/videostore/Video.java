@@ -1,18 +1,22 @@
 package VideoProject.video.videostore;
 
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
+import java.util.Set;
 import java.util.UUID;
 
 public class Video {
     private UUID id;
+    @NotBlank(message = "name may not be blank")
     private String name;
     private Genre genre;
     private LocalDate rentalDate;
     private LocalDate returnDate;
     private boolean isRental = false;
 
-    public Video() {
+    public Video(String name) {
         this.id = UUID.randomUUID();
+        this.name = name;
     }
 
     public UUID getId() {
@@ -27,10 +31,9 @@ public class Video {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@NotBlank String name) {
         this.name = name;
     }
-
 
     public Enum getGenre() {
         return genre;

@@ -15,7 +15,6 @@ public class VideoApp {
         MemberService memberService = new MemberServiceImpl();
         MemberAnnotationCheck annotationCheck = new MemberAnnotationCheck();
 
-
         Scanner scanner = new Scanner(System.in);
         int choice = 0;
 
@@ -29,17 +28,16 @@ public class VideoApp {
 
             switch (choice) {
                 case 1:
-                    // 생성자 초기화
-                    Video newVideo = new Video();
-                    String name = "";
-                    int genre = 0;
-
                     System.out.print("비디오 제목을 입력해주세요. : ");
-                    newVideo.setName(scanner.next());
+                    String videoName = scanner.next();
 
                     System.out.println("비디오 장르를 입력해주세요. (1)로맨스 (2)SF (3)코미디 (4)호러 (5)액션");
                     System.out.print("비디오 장르는 번호를 입력해주세요 : ");
-                    genre = scanner.nextInt();
+                    int genre = scanner.nextInt();
+
+                    // 비디오 생성자
+                    Video newVideo = new Video(videoName);
+                    newVideo.setName(videoName);
 
                     // 비디오 장르 등록
                     videoService.singUpGenre(genre, newVideo);
@@ -52,6 +50,7 @@ public class VideoApp {
 
 
                 case 2:
+                    String name = "";
                     System.out.print("검색하고자 하는 비디오 이름을 입력해주세요. : ");
                     name = scanner.next();
 

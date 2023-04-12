@@ -21,29 +21,25 @@ public class VideoApplication {
 		VideoService videoService = new VideoServiceImpl();
 		MemberService memberService = new MemberServiceImpl();
 
-		Video video1 = new Video();
-		video1.setName("kill");
+		Video video1 = new Video("kill");
 		video1.setGenre(Genre.ACTION);
 		video1.setRentalDate(LocalDate.of(2023, 04, 10));
 		video1.setReturnDate(LocalDate.of(2023, 04, 17));
 		video1.setRental(true);
 
-		Video video2 = new Video();
-		video2.setName("love");
+		Video video2 = new Video("love");
 		video2.setGenre(Genre.ROMANTIC);
 		video2.setRentalDate(LocalDate.of(2023, 04, 11));
 		video2.setReturnDate(LocalDate.of(2023, 04, 18));
 		video2.setRental(true);
 
-		Video video3 = new Video();
-		video3.setName("starWars");
+		Video video3 = new Video("starWars");
 		video3.setGenre(Genre.SF);
 		video3.setRentalDate(LocalDate.of(2023, 04, 12));
 		video3.setReturnDate(LocalDate.of(2023, 04, 19));
 		video3.setRental(true);
 
-		Video video4 = new Video();
-		video4.setName("OST");
+		Video video4 = new Video("ost");
 		video4.setGenre(Genre.COMEDY);
 		video4.setRentalDate(LocalDate.of(2023, 04, 13));
 		video4.setReturnDate(LocalDate.of(2023, 04, 20));
