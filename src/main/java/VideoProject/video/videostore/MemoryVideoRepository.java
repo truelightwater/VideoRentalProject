@@ -22,7 +22,7 @@ public class MemoryVideoRepository implements VideoRepository {
                     return video;
                 })
                 .orElseGet(() -> {
-                    log.info("검색한 비디오가 없습니다.");
+                    log.info("**** 검색한 비디오가 없습니다. ****");
                     return null;
                 });
     }
@@ -32,7 +32,7 @@ public class MemoryVideoRepository implements VideoRepository {
         return Optional.ofNullable(store.values())
                 .map(values -> {
                     if (values.isEmpty()) {
-                        log.info("비디오 목록이 비어 있습니다.");
+                        log.info("**** 비디오 목록이 비어 있습니다. ****");
                     } else {
                         values.forEach(video -> log.info(String.valueOf(video)));
                     }

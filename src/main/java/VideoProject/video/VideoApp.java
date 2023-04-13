@@ -31,14 +31,13 @@ public class VideoApp {
 
                 // 입력값이 숫자가 아닌 경우
                 while (!scanner.hasNextInt()) {
-                    System.out.println("잘못 입력하셨습니다. 1~8 중에 숫자만 입력해주세요.");
-                    System.out.print("원하는 번호를 입력하세요 : ");
+                    System.out.print("잘못 입력하셨습니다. 1~8 중에 숫자만 입력해주세요. : ");
                     scanner.nextLine();
                 }
 
                 // 입력한 값이 1~9가 아닌 경우
                 if (choice < 1 || choice > 9) {
-                    System.out.println("잘못된 번호를 입력하셨습니다. 다시 입력해주세요.");
+                    System.out.print("숫자가 아닌 다른 입력을 하셨습니다. 다시 입력해주세요.");
                     System.out.println();
                 }
 
@@ -74,7 +73,7 @@ public class VideoApp {
                     break;
 
                 case 2:
-                    System.out.print("검색하고자 하는 비디오 이름을 입력해주세요. : ");
+                    System.out.print("검색하고자 하는 비디오 이름을 입력해주세요.(대소문자 구분) : ");
                     videoName = scanner.nextLine();
 
                     videoService.findByVideo(videoName);
@@ -130,7 +129,7 @@ public class VideoApp {
 
                 case 7:
                     System.out.print ("회원 이름을 입력해주세요 : ");
-                    name = scanner.next();
+                    name = scanner.nextLine();
                     memberService.findMember(name);
                     System.out.println();
                     break;

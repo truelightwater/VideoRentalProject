@@ -3,6 +3,8 @@ package VideoProject.video.videostore;
 import VideoProject.video.member.Member;
 import VideoProject.video.member.MemberService;
 import VideoProject.video.member.MemberServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -10,6 +12,7 @@ import java.util.*;
 public class VideoServiceImpl implements VideoService {
     private final VideoRepository videoRepository = new MemoryVideoRepository();
     private final MemberService memberService = new MemberServiceImpl();
+    private final Logger log = LoggerFactory.getLogger(getClass());
     private final Map<Member, ArrayList<Video>> memberVideo = new HashMap<>();
     ArrayList<Video> arrayList = new ArrayList<>();
 
@@ -62,6 +65,10 @@ public class VideoServiceImpl implements VideoService {
         Member rentalMember = memberService.findMember(memberName);
         Video rentalVideo = videoRepository.findByVideo(videoName);
 
+        if (rentalMember == null || rentalVideo == null) {
+            return;
+        }
+
         // 대여날짜
         rentalVideo.setRentalDate(today);
 
@@ -88,13 +95,12 @@ public class VideoServiceImpl implements VideoService {
         }
     }
 
-
     @Override
     public void returnVideo(String memberName) {
         Member rentalMember = memberService.findMember(memberName);
 
         Optional.ofNullable(memberVideo.get(rentalMember))
                 .ifPresentOrElse(videoArrayList -> videoArrayList.forEach(System.out::println),
-                        () -> System.out.println("대여 한 비디오가 없습니다."));
+                        () -> log.info("**** 대여 한 비디오가 없습니다. ****"));
     }
 }
