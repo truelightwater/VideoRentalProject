@@ -65,7 +65,7 @@ public class VideoServiceImpl implements VideoService {
         Member rentalMember = memberService.findMember(memberName);
         Video rentalVideo = videoRepository.findByVideo(videoName);
 
-        if (rentalMember == null && rentalVideo == null) {
+        if (rentalMember == null || rentalVideo == null) {
             return;
         }
 
