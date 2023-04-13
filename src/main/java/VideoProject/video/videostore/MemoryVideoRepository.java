@@ -20,9 +20,14 @@ public class MemoryVideoRepository implements VideoRepository {
     @Override
     public Video findByVideo(String name) {
         return Optional.ofNullable(store.get(name))
-                .map(video -> {log.info(String.valueOf(video));
-                    return video;})
-                .orElseGet(() -> {log.info("검색한 비디오가 없습니다."); return null; });
+                .map(video -> {
+                    log.info(String.valueOf(video));
+                    return video;
+                })
+                .orElseGet(() -> {
+                    log.info("검색한 비디오가 없습니다.");
+                    return null;
+                });
     }
 
     @Override
