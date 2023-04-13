@@ -8,6 +8,7 @@ import VideoProject.video.videostore.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class VideoApp {
@@ -74,7 +75,7 @@ public class VideoApp {
 
                 case 2:
                     System.out.print("검색하고자 하는 비디오 이름을 입력해주세요. : ");
-                    videoName = scanner.next();
+                    videoName = scanner.nextLine();
 
                     videoService.findByVideo(videoName);
                     System.out.println();

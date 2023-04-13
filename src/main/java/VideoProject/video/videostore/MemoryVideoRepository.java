@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class MemoryVideoRepository implements VideoRepository {
     private static Map<String, Video> store = new HashMap<>();
@@ -18,8 +19,10 @@ public class MemoryVideoRepository implements VideoRepository {
 
     @Override
     public Video findByVideo(String name) {
-        log.info(String.valueOf(store.get(name)));
-        return store.get(name);
+        return Optional.ofNullable(store.get(name))
+                .map(video -> {log.info(String.valueOf(video));
+                    return video;})
+                .orElseGet(() -> {log.info("검색한 비디오가 없습니다."); return null; });
     }
 
     @Override
