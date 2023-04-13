@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MemoryMemberRepository implements MemberRepository {
-    private static Map<String, Member> store = new HashMap<>();
+     private static Map<String, Member> store = new HashMap<String, Member>();
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     @Override
@@ -17,8 +17,8 @@ public class MemoryMemberRepository implements MemberRepository {
 
     @Override
     public Member findByMember(String name) {
+
         log.info(String.valueOf(store.get(name)));
         return store.get(name);
     }
-
 }

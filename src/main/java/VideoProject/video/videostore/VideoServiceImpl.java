@@ -5,10 +5,7 @@ import VideoProject.video.member.MemberService;
 import VideoProject.video.member.MemberServiceImpl;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class VideoServiceImpl implements VideoService {
     private final VideoRepository videoRepository = new MemoryVideoRepository();
@@ -91,12 +88,13 @@ public class VideoServiceImpl implements VideoService {
         }
     }
 
+
     @Override
     public void returnVideo(String memberName) {
         Member rentalMember = memberService.findMember(memberName);
 
-        ArrayList<Video> videoArrayList = memberVideo.get(rentalMember);
-        videoArrayList.stream().forEach(x -> System.out.println(x));
-
+        Optional.ofNullable(memberVideo.get(rentalMember))
+                .ifPresentOrElse(videoArrayList -> videoArrayList.forEach(System.out::println),
+                        () -> System.out.println("대여 한 비디오가 없습니다."));
     }
 }
