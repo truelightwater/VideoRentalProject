@@ -106,7 +106,6 @@ public class VideoApp {
                     break;
 
                 case 6:
-
                     Member member = Member.builder().build();
 
                     System.out.print("성함을 입력해주세요. : ");
@@ -121,9 +120,14 @@ public class VideoApp {
                     int age = scanner.nextInt();
                     member.setAge(age);
 
-                    annotationCheck.memberValidation(member);
+                    boolean isTure = annotationCheck.memberValidation(member);
+                    if (!isTure) {
+                        System.out.println();
+                        break;
+                    } else {
+                        memberService.join(member);
+                    }
 
-                    memberService.join(member);
                     System.out.println();
                     break;
 

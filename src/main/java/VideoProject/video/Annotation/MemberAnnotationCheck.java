@@ -10,13 +10,12 @@ public class MemberAnnotationCheck {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
 
-    public void memberValidation(Member member) {
+    public boolean memberValidation(Member member) {
         Field[] fields = member.getClass().getDeclaredFields();
 
         for (Field field : fields) {
             NameAnnotation maxLength = field.getAnnotation(NameAnnotation.class);
             PhoneNumberAnnotation numberCheck = field.getAnnotation(PhoneNumberAnnotation.class);
-
 
             if (field.isAnnotationPresent(RangeAgeAnnotation.class) && field.getType() == int.class) {
                 RangeAgeAnnotation ageCheck = field.getAnnotation(RangeAgeAnnotation.class);
@@ -26,8 +25,12 @@ public class MemberAnnotationCheck {
 
                 try {
                     int value = field.getInt(member);
-                    if (value < min || value > max) {
-                        throw new IllegalArgumentException("나이가 너무 어리거나 너무 많습니다.");
+                    if (value < min) {
+                        log.info("나이가 너무 어립니다.");
+                        return false;
+                    } else if (value > max) {
+                        log.info("나이가 너무 많습니다.");
+                        return false;
                     }
 
                 } catch (IllegalAccessException e) {
@@ -41,7 +44,9 @@ public class MemberAnnotationCheck {
                 try {
                     String value = (String) field.get(member);
                     if (value.length() > lengthLimit) {
-                        throw new IllegalArgumentException("이름의 길이가 " + lengthLimit + "을 초과합니다.");
+                        log.info("이름의 길이가 너무 깁니다.");
+                        return false;
+                        //throw new IllegalArgumentException("이름의 길이가 " + lengthLimit + "을 초과합니다.");
                     }
 
                 } catch (IllegalAccessException e) {
@@ -54,7 +59,9 @@ public class MemberAnnotationCheck {
                 try {
                     String phoneNumber = (String) field.get(member);
                     if (!phoneNumber.matches("\\d{3}-\\d{3,4}-\\d{4}")) {
-                        throw new IllegalArgumentException("올바른 휴대폰 번호가 아닙니다.");
+                        log.info("올바른 휴대폰 번호가 아닙니다.");
+                        return false;
+                        // throw new IllegalArgumentException("올바른 휴대폰 번호가 아닙니다.");
                     }
 
                 } catch (IllegalAccessException e) {
@@ -63,5 +70,7 @@ public class MemberAnnotationCheck {
             }
 
         }
+
+        return true;
     }
 }
