@@ -63,7 +63,7 @@ public class VideoApplication {
 						.build();
 		memberService.join(member1);
 
-		memberService.findMember("kim");
+		memberService.findMember("lee");
 	}
 
 }

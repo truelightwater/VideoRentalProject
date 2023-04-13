@@ -10,13 +10,12 @@ import java.util.UUID;
 
 public class Member {
     private UUID id;
-    @NameAnnotation(nameLength = 10)
+    @NameAnnotation(nameLength = 20)
     private String name;
     @PhoneNumberAnnotation
     private String phoneNumber;
     @RangeAgeAnnotation(min = 8, max = 100)
     private int age;
-
     private ArrayList<Video> arrayList;
 
     private Member(MemberBuilder builder) {
