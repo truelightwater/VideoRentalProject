@@ -13,7 +13,7 @@ public class VideoApp {
         VideoService videoService = factory.createVideoServices();
         MemberAnnotationCheck annotationCheck = factory.createAnnotationCheck();
 
-        whileRunner result = new whileRunner();
+        WhileRunner result = WhileRunner.getInstance();
         result.loop(memberService, videoService, annotationCheck);
 
     }

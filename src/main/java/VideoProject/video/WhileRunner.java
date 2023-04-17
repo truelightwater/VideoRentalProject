@@ -10,11 +10,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class whileRunner {
+public class WhileRunner {
 
     // 싱글톤 패턴
-    List<Integer> history = new ArrayList<>();
+    private static final List<Integer> history = new ArrayList<>();
+    private static WhileRunner instance = null;
 
+    private WhileRunner() {
+    }
+
+    public static WhileRunner getInstance() {
+        if (instance == null) {
+            instance = new WhileRunner();
+
+        }
+        return instance;
+    }
+
+    public List<Integer> getHistory() {
+        return history;
+    }
 
     public void loop(MemberService memberService, VideoService videoService, MemberAnnotationCheck annotationCheck) {
 
