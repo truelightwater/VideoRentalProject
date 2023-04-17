@@ -1,5 +1,6 @@
 package VideoProject.video;
 
+import VideoProject.video.Annotation.MemberAnnotationCheck;
 import VideoProject.video.member.MemberService;
 import VideoProject.video.member.MemberServiceImpl;
 import VideoProject.video.videostore.VideoService;
@@ -15,4 +16,10 @@ public class ServiceFactory implements VideoFactory {
     public VideoService createVideoServices() {
         return new VideoServiceImpl();
     }
+
+    public MemberAnnotationCheck createAnnotationCheck() {
+        return new MemberAnnotationCheck();
+    }
+
+
 }

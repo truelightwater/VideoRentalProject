@@ -12,14 +12,11 @@ import java.util.Scanner;
 
 public class whileRunner {
 
-    MemberAnnotationCheck annotationCheck = new MemberAnnotationCheck();
-
-
     // 싱글톤 패턴
     List<Integer> history = new ArrayList<>();
 
 
-    public void loop(MemberService memberService, VideoService videoService) {
+    public void loop(MemberService memberService, VideoService videoService, MemberAnnotationCheck annotationCheck) {
 
         Scanner scanner = new Scanner(System.in);
         int choice = 1;
