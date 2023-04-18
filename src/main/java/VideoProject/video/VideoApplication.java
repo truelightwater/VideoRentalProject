@@ -1,5 +1,7 @@
 package VideoProject.video;
 
+import VideoProject.video.command.Command;
+import VideoProject.video.command.VideoReturnCm;
 import VideoProject.video.member.Member;
 import VideoProject.video.member.MemberService;
 import VideoProject.video.member.MemberServiceImpl;
@@ -10,6 +12,7 @@ import VideoProject.video.videostore.VideoServiceImpl;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
 @SpringBootApplication
 public class VideoApplication {
@@ -17,53 +20,29 @@ public class VideoApplication {
 	public static void main(String[] args) {
 		// SpringApplication.run(VideoApplication.class, args);
 
-		VideoService videoService = new VideoServiceImpl();
-		MemberService memberService = new MemberServiceImpl();
+//		VideoService videoService = new VideoServiceImpl();
+//		Scanner scanner = new Scanner(System.in);
+//
+//		Command videoReturnCm = new VideoReturnCm(videoService, scanner);
+//		videoReturnCm.execute();
 
-		Video video1 = new Video("kill");
-		video1.setGenre(Genre.ACTION);
-		video1.setRentalDate(LocalDate.of(2023, 04, 10));
-		video1.setReturnDate(LocalDate.of(2023, 04, 17));
-		video1.setRental(true);
+		Scanner input = new Scanner(System.in);
 
-		Video video2 = new Video("love");
-		video2.setGenre(Genre.ROMANTIC);
-		video2.setRentalDate(LocalDate.of(2023, 04, 11));
-		video2.setReturnDate(LocalDate.of(2023, 04, 18));
-		video2.setRental(true);
+		int num;
+		String str;
+		System.out.println("num입력");
+		num = input.nextInt();
 
-		Video video3 = new Video("starWars");
-		video3.setGenre(Genre.SF);
-		video3.setRentalDate(LocalDate.of(2023, 04, 12));
-		video3.setReturnDate(LocalDate.of(2023, 04, 19));
-		video3.setRental(true);
+		System.out.println("str입력");
+		str = input.next();
 
-		Video video4 = new Video("ost");
-		video4.setGenre(Genre.COMEDY);
-		video4.setRentalDate(LocalDate.of(2023, 04, 13));
-		video4.setReturnDate(LocalDate.of(2023, 04, 20));
-		video4.setRental(true);
+		System.out.println("num : " + num);
+		System.out.println("str : " + str);
+		input.close();
 
-		videoService.signUpVideo(video1);
-		videoService.signUpVideo(video2);
-		videoService.signUpVideo(video3);
-		videoService.signUpVideo(video4);
 
-		Member member = Member.builder()
-				.name("kim")
-				.phoneNumber("010-1234-1234")
-				.age(34)
-				.build();
-		memberService.join(member);
 
-		Member member1 = Member.builder()
-						.name("yun")
-						.phoneNumber("010-5678-5678")
-						.age(31)
-						.build();
-		memberService.join(member1);
 
-		memberService.findMember("lee");
 	}
 
 }

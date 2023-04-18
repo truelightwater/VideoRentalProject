@@ -1,4 +1,4 @@
-package VideoProject.video;
+package VideoProject.video.factory;
 
 import VideoProject.video.Annotation.MemberAnnotationCheck;
 import VideoProject.video.member.MemberService;

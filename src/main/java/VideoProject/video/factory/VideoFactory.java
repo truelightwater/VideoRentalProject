@@ -1,4 +1,4 @@
-package VideoProject.video;
+package VideoProject.video.factory;
 
 import VideoProject.video.member.MemberService;
 import VideoProject.video.videostore.VideoService;

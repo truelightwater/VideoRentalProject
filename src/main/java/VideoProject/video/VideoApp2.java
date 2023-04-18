@@ -3,35 +3,20 @@ package VideoProject.video;
 import VideoProject.video.Annotation.MemberAnnotationCheck;
 import VideoProject.video.member.Member;
 import VideoProject.video.member.MemberService;
-import VideoProject.video.videostore.Video;
-import VideoProject.video.videostore.VideoService;
+import VideoProject.video.member.MemberServiceImpl;
+import VideoProject.video.videostore.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class WhileRunner {
+public class VideoApp2 {
+    public static void main(String[] args) {
 
-    // 싱글톤 패턴
-    private static final List<Integer> history = new ArrayList<>();
-    private static WhileRunner instance = null;
-
-    private WhileRunner() {
-    }
-
-    public static WhileRunner getInstance() {
-        if (instance == null) {
-            instance = new WhileRunner();
-
-        }
-        return instance;
-    }
-
-    public List<Integer> getHistory() {
-        return history;
-    }
-
-    public void loop(MemberService memberService, VideoService videoService, MemberAnnotationCheck annotationCheck) {
+        VideoService videoService = new VideoServiceImpl();
+        MemberService memberService = new MemberServiceImpl();
+        MemberAnnotationCheck annotationCheck = new MemberAnnotationCheck();
+        List<Integer> history = new ArrayList<>();
 
         Scanner scanner = new Scanner(System.in);
         int choice = 1;
@@ -135,7 +120,6 @@ public class WhileRunner {
                     member.setAge(age);
 
                     boolean isTure = annotationCheck.memberValidation(member);
-
                     if (!isTure) {
                         System.out.println();
                         break;
@@ -147,14 +131,14 @@ public class WhileRunner {
                     break;
 
                 case 7:
-                    System.out.print("회원 이름을 입력해주세요 : ");
+                    System.out.print ("회원 이름을 입력해주세요 : ");
                     name = scanner.nextLine();
                     memberService.findMember(name);
                     System.out.println();
                     break;
 
                 case 8:
-                    System.out.println("사용자가 입력한 번호의 목록 : " + history);
+                    System.out.println("사용자가 입력한 번호의 목록 : " +history);
                     System.out.println();
                     break;
 
@@ -164,8 +148,5 @@ public class WhileRunner {
                     break;
             }
         }
-
     }
-
-
 }
