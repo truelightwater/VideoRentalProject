@@ -18,7 +18,8 @@ public class MemberFindCm implements Command {
     @Override
     public void execute() {
         System.out.print("회원 이름을 입력해주세요 : ");
-        memberService.findMember(scanner.nextLine());
+        String name = scanner.nextLine();
+        memberService.findMember(name);
         System.out.println();
     }
 }

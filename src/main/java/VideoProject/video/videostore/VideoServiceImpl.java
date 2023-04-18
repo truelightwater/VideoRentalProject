@@ -13,7 +13,7 @@ public class VideoServiceImpl implements VideoService {
     private final VideoRepository videoRepository = new MemoryVideoRepository();
     private final MemberService memberService = new MemberServiceImpl();
     private final Logger log = LoggerFactory.getLogger(getClass());
-    private final Map<Member, ArrayList<Video>> memberVideo = new HashMap<>();
+    Map<Member, ArrayList<Video>> memberVideo = new HashMap<>();
     ArrayList<Video> arrayList = new ArrayList<>();
 
     @Override

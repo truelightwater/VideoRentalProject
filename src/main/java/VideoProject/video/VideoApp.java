@@ -1,10 +1,13 @@
 package VideoProject.video;
 
+import VideoProject.video.Annotation.MemberAnnotationCheck;
 import VideoProject.video.command.Command;
+import VideoProject.video.factory.AppFactory;
+import VideoProject.video.factory.MemberFactory;
+import VideoProject.video.factory.ServiceFactory;
+import VideoProject.video.factory.VideoFactory;
 import VideoProject.video.member.MemberService;
-import VideoProject.video.member.MemberServiceImpl;
 import VideoProject.video.videostore.VideoService;
-import VideoProject.video.videostore.VideoServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,19 +16,23 @@ import java.util.Scanner;
 public class VideoApp {
     public static void main(String[] args) {
 
-        VideoService videoService = new VideoServiceImpl();
-        MemberService memberService = new MemberServiceImpl();
+        // 팩토리 패턴
+        MemberFactory memberFactory = new ServiceFactory();
+        VideoFactory videoFactory = new ServiceFactory();
+
+        // 멤버, 비디오 팩토리
+        MemberService memberService = memberFactory.createMemberServices();
+        VideoService videoService = videoFactory.createVideoServices();
+        MemberAnnotationCheck annotationCheck = memberFactory.createAnnotationCheck();
 
         List<Integer> history = new ArrayList<>();
-
         Scanner scanner = new Scanner(System.in);
         int choice = 1;
 
-        CommandFactory commandFactory
-                = new CommandFactory(videoService, memberService);
+        CommandFactory commandFactory =
+                new CommandFactory(videoService, memberService, annotationCheck);
 
         while (true) {
-
             do {
                 System.out.println("(1)비디오 등록 (2)비디오 검색 (3)비디오 전체조회 " +
                         "(4)비디오 대여 (5)비디오 반납목록 (6)회원가입 (7)회원조회 (8)히스토리 (9)종료");
@@ -37,13 +44,14 @@ public class VideoApp {
                     scanner.nextLine();
                 }
 
-                // 입력한 값이 1~9가 아닌 경우
+                // 입력한 값이 1~9 범위가 아닌 경우
                 if (choice < 1 || choice > 9) {
                     System.out.print("숫자가 아닌 다른 입력을 하셨습니다. 다시 입력해주세요.");
                     System.out.println();
                 }
 
                 choice = scanner.nextInt();
+                scanner.nextLine();
 
                 // 입력한 숫자를 ArrayList()로 add
                 history.add(choice);
@@ -54,5 +62,7 @@ public class VideoApp {
             } while (choice < 1 || choice > 9);
 
         }
+
+
     }
 }

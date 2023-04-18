@@ -20,26 +20,11 @@ public class VideoApplication {
 	public static void main(String[] args) {
 		// SpringApplication.run(VideoApplication.class, args);
 
-//		VideoService videoService = new VideoServiceImpl();
-//		Scanner scanner = new Scanner(System.in);
-//
-//		Command videoReturnCm = new VideoReturnCm(videoService, scanner);
-//		videoReturnCm.execute();
+		VideoService videoService = new VideoServiceImpl();
+		Scanner scanner = new Scanner(System.in);
 
-		Scanner input = new Scanner(System.in);
-
-		int num;
-		String str;
-		System.out.println("num입력");
-		num = input.nextInt();
-
-		System.out.println("str입력");
-		str = input.next();
-
-		System.out.println("num : " + num);
-		System.out.println("str : " + str);
-		input.close();
-
+		Command videoReturnCm = new VideoReturnCm(videoService);
+		videoReturnCm.execute();
 
 
 

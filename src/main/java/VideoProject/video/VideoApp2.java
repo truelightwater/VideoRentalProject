@@ -79,7 +79,6 @@ public class VideoApp2 {
                     System.out.println();
                     break;
 
-
                 case 3:
                     videoService.findByAllVideo();
                     System.out.println();
