@@ -2,7 +2,6 @@ package VideoProject.video;
 
 import VideoProject.video.Annotation.MemberAnnotationCheck;
 import VideoProject.video.command.Command;
-import VideoProject.video.factory.AppFactory;
 import VideoProject.video.factory.MemberFactory;
 import VideoProject.video.factory.ServiceFactory;
 import VideoProject.video.factory.VideoFactory;
@@ -34,8 +33,7 @@ public class VideoApp {
 
         while (true) {
             do {
-                System.out.println("(1)비디오 등록 (2)비디오 검색 (3)비디오 전체조회 " +
-                        "(4)비디오 대여 (5)비디오 반납목록 (6)회원가입 (7)회원조회 (8)히스토리 (9)종료");
+                System.out.println("(1)비디오 등록 (2)비디오 검색 (3)비디오 전체조회 (4)비디오 대여 (5)비디오 반납목록 (6)회원가입 (7)회원조회 (8)히스토리 (9)종료");
                 System.out.print("원하는 번호를 입력하세요 : ");
 
                 // 입력값이 숫자가 아닌 경우
@@ -60,9 +58,6 @@ public class VideoApp {
                 command.execute();
 
             } while (choice < 1 || choice > 9);
-
         }
-
-
     }
 }

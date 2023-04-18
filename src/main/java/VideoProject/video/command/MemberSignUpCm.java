@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class MemberSignUpCm implements Command {
     private MemberService memberService;
     public MemberAnnotationCheck annotationCheck;
-    private Member member;
+    private Member member = Member.builder().build();
     Scanner scanner;
 
     public MemberSignUpCm(MemberService memberService, MemberAnnotationCheck annotationCheck) {
@@ -18,19 +18,20 @@ public class MemberSignUpCm implements Command {
         this.scanner = new Scanner(System.in);
     }
 
+
     @Override
     public void execute() {
         System.out.print("성함을 입력해주세요. : ");
-        // String name = scanner.nextLine();
-        member.setName(scanner.nextLine());
+        String name = scanner.nextLine();
+        member.setName(name);
 
         System.out.print("휴대폰번호를 입력해 주세요.(하이픈 포함) : ");
-        // String phoneNumber = scanner.nextLine();
-        member.setPhoneNumber(scanner.nextLine());
+        String phoneNumber = scanner.nextLine();
+        member.setPhoneNumber(phoneNumber);
 
         System.out.print("나이를 입력해주세요 : ");
-        // int age = scanner.nextInt();
-        member.setAge(scanner.nextInt());
+        int age = scanner.nextInt();
+        member.setAge(age);
         scanner.nextLine();
 
         boolean isTure = annotationCheck.memberValidation(member);
