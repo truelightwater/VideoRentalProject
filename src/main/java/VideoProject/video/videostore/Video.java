@@ -2,7 +2,6 @@ package VideoProject.video.videostore;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
-import java.util.Set;
 import java.util.UUID;
 
 public class Video {

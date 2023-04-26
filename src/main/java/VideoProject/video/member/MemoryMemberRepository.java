@@ -28,4 +28,9 @@ public class MemoryMemberRepository implements MemberRepository {
                    return null;
                 });
     }
+
+    @Override
+    public void delete(Member member) {
+        store.remove(member.getName());
+    }
 }

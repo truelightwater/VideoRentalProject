@@ -1,10 +1,7 @@
 package VideoProject.video.videostore;
 
-import VideoProject.video.member.Member;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 
 public interface VideoService {
