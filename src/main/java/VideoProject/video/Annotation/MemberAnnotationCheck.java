@@ -7,9 +7,7 @@ import org.slf4j.LoggerFactory;
 import java.lang.reflect.Field;
 
 public class MemberAnnotationCheck {
-
     private final Logger log = LoggerFactory.getLogger(getClass());
-
     public boolean memberValidation(Member member) {
         Field[] fields = member.getClass().getDeclaredFields();
 
@@ -21,7 +19,7 @@ public class MemberAnnotationCheck {
                 RangeAgeAnnotation ageCheck = field.getAnnotation(RangeAgeAnnotation.class);
                 int min = ageCheck.min();
                 int max = ageCheck.max();
-                field.setAccessible(true);
+                field.setAccessible(true);  // 접근제어자 무시하고 가져오기
 
                 try {
                     int value = field.getInt(member);
