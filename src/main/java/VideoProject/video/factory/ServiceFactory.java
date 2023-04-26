@@ -7,7 +7,25 @@ import VideoProject.video.member.MemberServiceImpl;
 import VideoProject.video.videostore.VideoService;
 import VideoProject.video.videostore.VideoServiceImpl;
 
-public class ServiceFactory implements VideoFactory, MemberFactory, AppFactory {
+public class ServiceFactory implements Factory {
+
+    // 1. private 생성자
+    private ServiceFactory() {
+    }
+
+    // 2. private static 인스턴스 변수
+    private static ServiceFactory serviceFactory;
+
+    // 프로그램이 시작되면 바로 메모리에 올라갈 수 있도록 하는 것은 아래처럼
+    // private static ServiceFactory serviceFactory = new ServiceFactory();
+
+    // 3. public static getInstance() method 구현
+    public static ServiceFactory getInstance() {
+        if (serviceFactory == null) {
+            serviceFactory = new ServiceFactory();
+        }
+        return serviceFactory;
+    }
 
     //////////////// 멤버
     @Override
@@ -21,6 +39,7 @@ public class ServiceFactory implements VideoFactory, MemberFactory, AppFactory {
     public Command findMember(MemberService memberService) {
         return new MemberFindCm(memberService);
     }
+
     @Override
     public MemberAnnotationCheck createAnnotationCheck() {
         return new MemberAnnotationCheck();

@@ -7,10 +7,10 @@ import VideoProject.video.member.MemberService;
 import java.util.Scanner;
 
 public class MemberSignUpCm implements Command {
+
+    public Scanner scanner;
     private MemberService memberService;
     public MemberAnnotationCheck annotationCheck;
-    private Member member = Member.builder().build();
-    Scanner scanner;
 
     public MemberSignUpCm(MemberService memberService, MemberAnnotationCheck annotationCheck) {
         this.memberService = memberService;
@@ -18,9 +18,10 @@ public class MemberSignUpCm implements Command {
         this.scanner = new Scanner(System.in);
     }
 
-
     @Override
     public void execute() {
+        Member member = Member.builder().build();
+
         System.out.print("성함을 입력해주세요. : ");
         String name = scanner.nextLine();
         member.setName(name);
