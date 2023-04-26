@@ -1,16 +1,16 @@
 package VideoProject.video.command;
 
-public class HistoryCm implements Command {
+public class PreHistoryCm implements Command {
 
     private CommandFactory commandFactory;
 
-    public HistoryCm(CommandFactory commandFactory) {
+    public PreHistoryCm(CommandFactory commandFactory) {
         this.commandFactory = commandFactory;
     }
 
     @Override
     public void execute() {
-        System.out.println("사용자가 입력한 번호의 목록 : " +commandFactory.getCommandHistory());
+        commandFactory.getPreviousCommand();
         System.out.println();
     }
 
