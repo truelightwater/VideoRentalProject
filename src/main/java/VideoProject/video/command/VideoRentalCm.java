@@ -25,4 +25,9 @@ public class VideoRentalCm implements Command {
         videoService.rentalVideo(rentalMemberName, rentalVideoName);
         System.out.println();
     }
+
+    @Override
+    public void undo() {
+
+    }
 }

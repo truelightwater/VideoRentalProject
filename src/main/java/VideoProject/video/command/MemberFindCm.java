@@ -22,4 +22,9 @@ public class MemberFindCm implements Command {
         memberService.findMember(name);
         System.out.println();
     }
+
+    @Override
+    public void undo() {
+
+    }
 }

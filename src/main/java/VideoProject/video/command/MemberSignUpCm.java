@@ -12,6 +12,13 @@ public class MemberSignUpCm implements Command {
     private MemberService memberService;
     public MemberAnnotationCheck annotationCheck;
 
+    // call by reference, call by value
+    // 얕은복사 -> 주소값을 가지게 되어 자바의 객체를 복사하게 되면은 동기화처럼 된다.
+    // 깊은복사 -> 객체에 새로운 값을 가지게 된다. Cloneable
+    // hashMap 에서 value 의 값이 참조형자료가 들어가게 되기 때문에 주소값을 가지게 된다.
+    // private Member member = Member.builder().build();
+
+
     public MemberSignUpCm(MemberService memberService, MemberAnnotationCheck annotationCheck) {
         this.memberService = memberService;
         this.annotationCheck = annotationCheck;
@@ -44,5 +51,10 @@ public class MemberSignUpCm implements Command {
         }
 
         System.out.println();
+    }
+
+    @Override
+    public void undo() {
+
     }
 }

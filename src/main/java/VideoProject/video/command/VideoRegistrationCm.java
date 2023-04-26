@@ -36,4 +36,9 @@ public class VideoRegistrationCm implements Command {
 
         System.out.println();
     }
+
+    @Override
+    public void undo() {
+
+    }
 }

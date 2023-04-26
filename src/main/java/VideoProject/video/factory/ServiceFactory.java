@@ -80,7 +80,7 @@ public class ServiceFactory implements Factory {
     //////////////// 어플리케이션
     @Override
     public Command history() {
-        return new HistoryCm();
+        return new HistoryCm(new CommandFactory());
     }
 
     @Override

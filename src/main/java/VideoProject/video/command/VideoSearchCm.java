@@ -21,4 +21,9 @@ public class VideoSearchCm implements Command {
 
         System.out.println();
     }
+
+    @Override
+    public void undo() {
+
+    }
 }

@@ -19,4 +19,9 @@ public class VideoReturnCm implements Command {
         videoService.returnVideo(scanner.nextLine());
         System.out.println();
     }
+
+    @Override
+    public void undo() {
+
+    }
 }
